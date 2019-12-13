@@ -388,7 +388,7 @@ function removeFrame() {
 
 function save() {
   console.log(JSON.stringify(frames));
-  document.querySelector("#export").innerText = JSON.stringify(frames).replace(/\[/g, "{").replace(/]/g, "}");
+  document.querySelector("#export").innerText = JSON.stringify(frames);
   scrollStart = performance.now();
   window.requestAnimationFrame(scrollToExport);
 }
