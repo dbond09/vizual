@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+  <div style="position: absolute; left: 50%; top: 100px; transform: translate(-50%)">
+    <p id="name">Vizuális Bazsevátor 3000</p>
+    <canvas id="canvas" width="1200" height="600"></canvas>
+  </div>
+  <div id="editor" style="position: absolute; left: 50%; top: 400px; transform: translate(-50%)">
+  </div>
+  <div style="position: absolute; left: 50%; top: 550px; transform: translate(-50%); background-color: black; color:white; font-size: 50px; padding: 5px; text-align: center">
+    <div style="outline: 1px solid white; display: inline-block; width: 50px; cursor: pointer" onclick="addFrame()">
+      +
+    </div>
+    <div style="outline: 1px solid white; display: inline-block; width: 50px; cursor: pointer" onclick="removeFrame()">
+      -
+    </div>
+    <div style="outline: 1px solid white; display: inline-block; cursor: pointer" onclick="save()">
+      Export
+    </div>
+  </div>
+  <div id="export" style="position: absolute; left: 50%; top: 120vh; width: 80vw; height: 50vh; transform: translate(-50%); background-color: black; color: white; padding: 10px">
+
+  </div>
+  <!-- <svg version="1.1" width="2000" height="2000"></svg> -->
+
+  <script src="js/chars2.js"></script>
+  <script src="js/renderdotmatrix.js"></script>
+  <script src="js/main.js"></script>
+</body>

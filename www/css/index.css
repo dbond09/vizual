@@ -1,0 +1,106 @@
+body {
+  /* background-color: black; */
+  background-image: url('../metal.jpg');
+  background-size: contain;
+  height: 200vh;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+svg {
+  /* opacity: 0; */
+  z-index: 5;
+}
+
+#cables {
+  opacity: 0;
+}
+
+#cables > line {
+  stroke: orange;
+  stroke-width: 2;
+}
+
+canvas {
+  position: relative;
+  background-color: black;
+  /* left: -50%; */
+  /* transform: translate(-50%, 0); */
+  border: 10px solid black;
+  z-index: -1;
+}
+
+p {
+  position: absolute;
+  margin: 0;
+  font-size: 40px;
+  color: white;
+  font-family: sans-serif;
+}
+
+#name {
+  position: absolute;
+  display: block;
+  margin: 0;
+  font-size: 3px;
+  font-weight: 100;
+  color: white;
+  font-family: sans-serif;
+  float: right;
+  right: 2px;
+  bottom: 5px;
+}
+
+#jarat {
+  left: 55px;
+  top: 10px;
+
+}
+
+#irany {
+  left: 270px;
+  top: 10px;
+}
+
+#indulas {
+  right: 55px;
+  text-align: right;
+  top: 10px;
+}
+
+#indulas > span {
+  font-size: 25px;
+  vertical-align: 10%;
+}
+
+.frame {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+#editor {
+  background-color: black;
+  padding: 20px;
+  max-height: 100px;
+  width: 80%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+table {
+  display: inline-block;
+  outline: 1px solid gray;
+}
+
+td {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 0px;
+  border: 1px solid gray;
+}
+
+td.on {
+  background-color: orange;
+}

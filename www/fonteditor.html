@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+  <table>
+    <tbody>
+
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <br>
+  <br>
+  <input id="character"></input>
+  <button onclick="done()">Done</button>
+  <br>
+  <input id="output"></input>
+  <script>
+    if (!Array.prototype.last){
+        Array.prototype.last = function(){
+            return this[this.length - 1];
+        };
+    };
+
+    const ROWS = 6;
+    const COLUMNS = 6;
+
+    var matrix = [];
+
+    var tb = document.querySelector('tbody');
+    for (var i = 0; i < ROWS; i++) {
+      var tr = document.createElement('tr');
+      matrix.push([]);
+      for (var j = 0; j < COLUMNS; j++) {
+        var td = document.createElement('td');
+        td.dataset.i = i;
+        td.dataset.j = j;
+        td.onclick = (e) => {
+          var i = e.currentTarget.dataset.i;
+          var j = e.currentTarget.dataset.j;
+          e.currentTarget.className = e.currentTarget.className == 'on' ? '' : 'on';
+          console.log(i, j);
+          matrix[i][j] = (matrix[i][j] + 1) % 2;
+        }
+        tr.appendChild(td);
+        matrix[matrix.length-1].push(0);
+      }
+      tb.appendChild(tr);
+    }
+
+    function done() {
+      // while (true) {
+      //   // if (matrix[0].last() == 0 &&
+      //   //     matrix[1].last() == 0 &&
+      //   //     matrix[2].last() == 0 &&
+      //   //     matrix[3].last() == 0 &&
+      //   //     matrix[4].last() == 0 &&
+      //   //     matrix[5].last() == 0 &&
+      //   //     matrix[6].last() == 0) {
+      //     for (var j = 0; j < 7; j++) {
+      //       matrix[j] = matrix[j].slice(0, matrix[j].length-1);
+      //     }
+      //     break;
+      //   // }
+      //   // else {
+      //     // break;
+      //   // }
+      // }
+      console.log(JSON.stringify(matrix));
+      document.querySelector('#output').value = "'" + document.querySelector("#character").value + "': " + JSON.stringify(matrix) + ",";
+      document.querySelector('#output').select();
+      document.execCommand('copy');
+    }
+  </script>
+  <style>
+    body {
+      background-color: black;
+    }
+
+    table {
+      display: block;
+    }
+
+    td {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+      border-radius: 10px;
+      border: 1px solid gray;
+    }
+
+    td.on {
+      background-color: orange;
+    }
+  </style>
+</body>
+</html>
