@@ -17,4 +17,4 @@ for k, frame in enumerate(frames):
 frames_out += '}}\n'
 frames_out += "#define FRAMES_N " + str(len(frames))
 
-open('main/frames.h', 'w').write(frames_out)
+open('frames.h', 'w').write(frames_out)
