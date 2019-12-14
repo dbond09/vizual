@@ -1,8 +1,8 @@
 #include <avr/pgmspace.h>
 #include "frames.h"
 
-int cols[] = {11, 10, 9, 8, 7, 6};
-int dec[] = {4, 3, 2};
+int cols[] = {6, 7, 8, 9, 10, 11};
+int dec[] = {2, 3, 4};
 
 int rows[] = {0b000, 0b001, 0b011, 0b010, 0b110, 0b111, 0b101, 0b100};
 //              0      1      3      2      6      7      5       4
