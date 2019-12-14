@@ -17,6 +17,4 @@ for k, frame in enumerate(frames):
 frames_out += '}}\n'
 frames_out += "#define FRAMES_N " + str(len(frames))
 
-with open('frames.h', 'w') as fout:
-    json.dump(data, frames_out)
-fout.close()
+open('frames.h', 'w').write(frames_out)
