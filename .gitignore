@@ -1,3 +1,4 @@
 **/.DS_Store
 arduino/main/frames.h
-arudino/*.json
+arduino/*.json
+arudino/*.txt
