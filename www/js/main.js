@@ -5,8 +5,8 @@ if (!Array.prototype.last){
 };
 
 var DOT_RADIUS = 20;
-const ROWS = 20;
-const COLUMNS = 50;
+var ROWS = 6;
+var COLUMNS = 6;
 const COLORS = [
   // '#262626',
   '#332100',
@@ -22,8 +22,8 @@ function DotMatrixDisplay() {
   this.content = [];
   this.canvas = document.getElementById('canvas');
   this.ctx = canvas.getContext('2d', {alpha: false});
-  this.width = 6;
-  this.height = 6;
+  this.width = COLUMNS;
+  this.height = ROWS;
   this.canvas.width = (DOT_RADIUS+3) * 2 * this.width - 6;
   this.canvas.height = (DOT_RADIUS+3) * 2 * this.height - 6;
   this.orangeFill = this.ctx.createRadialGradient(DOT_RADIUS, DOT_RADIUS, 2, DOT_RADIUS, DOT_RADIUS, DOT_RADIUS);
@@ -34,6 +34,8 @@ function DotMatrixDisplay() {
   this.sprites = [];
 
   this.state = 0;
+
+  window.requestAnimationFrame(()=>{try {this.draw()} catch(e) {}})
 }
 
 DotMatrixDisplay.prototype.initSprites = function() {
@@ -94,7 +96,6 @@ var state = 0;
 
 
 var display = new DotMatrixDisplay();
-window.requestAnimationFrame(()=>{display.draw()});
 
 const startTime = performance.now();
 const TIMES = {screws: 4000, cable: 4500, noise: 6500};
@@ -340,9 +341,9 @@ function initFrames() {
 
     var table = document.createElement('table');
     var tb = document.createElement('tbody');
-    for (var x = 0; x < 6; x++) {
+    for (var x = 0; x < ROWS; x++) {
       var tr = document.createElement('tr');
-      for (var y = 0; y < 6; y++) {
+      for (var y = 0; y < COLUMNS; y++) {
         var td = document.createElement('td');
         if (frames[i][x][y]) {
           td.className = 'on';
@@ -371,14 +372,14 @@ function initFrames() {
 initFrames();
 
 function addFrame() {
-  frames.push(Array(6).fill().map(()=>Array(6).fill(0)));
+  frames.push(Array(ROWS).fill().map(()=>Array(COLUMNS).fill(0)));
   initFrames();
 }
 
 function removeFrame() {
   display.state = 0;
   if (frames.length == 1)   {
-    frames[0] = Array(6).fill().map(()=>Array(6).fill(0));
+    frames[0] = Array(ROWS).fill().map(()=>Array(COLUMNS).fill(0));
   }
   else {
     frames.pop();
@@ -399,4 +400,12 @@ function scrollToExport() {
   if (elapsed < 500) {
     window.requestAnimationFrame(scrollToExport);
   }
+}
+
+function set7() {
+  ROWS = 7;
+  COLUMNS = 7;
+  frames = [Array(ROWS).fill().map(()=>Array(COLUMNS).fill(0))];
+  initFrames();
+  display = new DotMatrixDisplay();
 }

@@ -2,16 +2,17 @@
 #include "frames.h"
 
 int cols[] = {11, 10, 9, 8, 7, 6};
-int dec[] = {2, 3, 4};
+int dec[] = {4, 3, 2};
 
 int rows[] = {0b000, 0b001, 0b011, 0b010, 0b110, 0b111, 0b101, 0b100};
 //              0      1      3      2      6      7      5       4
 
 const uint8_t frames[][6] PROGMEM = FRAMES;
-int current_frame = 0, pot_in = 0;
+int current_frame = 0;
 uint8_t buffer;
 
 void setup() {
+  Serial.begin(9600);
   for (int i = 0; i < 6; i++) {
     pinMode(cols[i], OUTPUT);
     if(i < 3) pinMode(dec[i], OUTPUT);
@@ -19,8 +20,6 @@ void setup() {
 }
 
 void loop() {
-  pot_in = analogRead(1);
-  
   for (int y = 0; y < 8; y++) {
     digitalWrite(dec[0], rows[y] & 1);
     digitalWrite(dec[1], rows[y] >> 1 & 1);
@@ -34,5 +33,5 @@ void loop() {
     }
   }
   current_frame = (current_frame + 1) % FRAMES_N;
-  delay(pot_in/2);
+  delay(200);
 }
